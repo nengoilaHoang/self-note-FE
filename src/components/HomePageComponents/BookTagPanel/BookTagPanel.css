@@ -1,0 +1,134 @@
+.tag-panel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Thanh tìm kiếm */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-ui);
+  padding: 8px 16px;
+  transition: border-color 0.2s ease;
+}
+
+.search-wrapper:focus-within {
+  border-color: var(--primary-focus);
+}
+
+.search-icon {
+  color: var(--text-muted);
+  margin-right: 10px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: transparent;
+}
+
+/* Hộp chữ nhật chứa Tags */
+.tag-box {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-ui);
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  min-height: 120px;
+}
+
+/* Từng Tag riêng lẻ (Đã chuyển thành flex để chứa icon X) */
+.tag-item {
+  background-color: #EFF6FF; 
+  color: var(--primary-focus);
+  padding: 4px 8px 4px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.tag-item:hover {
+  background-color: var(--primary-focus);
+  color: #FFFFFF;
+}
+
+/* Nút xóa Tag (Icon X) */
+.btn-remove-tag {
+  background: none;
+  border: none;
+  color: currentColor; /* Tự động ăn theo màu chữ của tag */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-remove-tag:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.no-tags-found {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* Form tạo Tag mới */
+.create-tag-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.create-tag-input {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-ui);
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.create-tag-input:focus {
+  border-color: var(--primary-focus);
+}
+
+.btn-create-tag {
+  background-color: var(--primary-focus);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-ui);
+  padding: 0 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-create-tag:hover {
+  opacity: 0.9;
+}

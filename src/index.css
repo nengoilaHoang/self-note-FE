@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Tên dự án: App Note-book Học Thuật 
+   Phong cách: Modern Scholar (Học Thuật Hiện Đại & Tối Giản)
+   Mục tiêu: Tối đa hóa sự tập trung, chống mỏi mắt, phân cấp thông tin rõ ràng
+   ========================================================================== */
+
+/* 1. IMPORT FONTS TỪ GOOGLE FONTS */
+/* - Inter: Dành cho UI, text thông thường (hiển thị cực tốt trên màn hình kỹ thuật số).
+   - Lora: Dành cho Tiêu đề, trích dẫn học thuật (mang lại cảm giác sách giấy chuyên sâu).
+   - Fira Code: Font Monospace tối ưu cho việc ghi chú code, giải thuật, config.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,500;0,700;1,500&display=swap');
+
+/* 2. KHAI BÁO BIẾN TOÀN CỤC (CSS VARIABLES) */
+:root {
+  /* Bảng màu chính (Colors) */
+  --bg-canvas: #F9FAFB;        /* Xám siêu nhạt: Làm nền app, giảm độ tương phản gắt */
+  --bg-surface: #FFFFFF;       /* Trắng tinh: Dành riêng cho trang giấy note (Editor) */
+  
+  --text-main: #334155;        /* Xám than: Chữ đọc dịu mắt hơn so với đen tuyền (#000) */
+  --text-muted: #94A3B8;       /* Xám nhạt: Dành cho ngày tháng, metadata, số từ */
+  
+  --primary-focus: #1E40AF;    /* Xanh Oxford: Điểm nhấn học thuật, logic, sự điềm tĩnh */
+  --accent-highlight: #FEF08A; /* Vàng nhạt: Cảm giác như dùng bút dạ quang tô highlight */
+  
+  /* Bảng màu cho System / Technical Blocks */
+  --bg-code: #0F172A;          /* Xanh đen sâu: Nền cho code snippet / terminal */
+  --text-code: #E2E8F0;        /* Trắng xám: Chữ nổi bật trong block code */
+
+  /* Hiệu ứng đổ bóng (Shadows) */
+  --shadow-page: 0 4px 20px rgba(0, 0, 0, 0.03); /* Bóng đổ cho trang giấy */
+  --shadow-float: 0 10px 25px -5px rgba(30, 64, 175, 0.1);
+
+  /* Đường viền & Bo góc (Borders & Radius) */
+  --border-subtle: 1px solid #E2E8F0;
+  --radius-page: 12px;
+  --radius-ui: 6px;
+}
+
+/* 3. RESET CSS CƠ BẢN */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 4. CẤU HÌNH TYPOGRAPHY */
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7; /* Khoảng cách dòng rộng rãi, dễ lướt qua các đoạn văn dài */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tiêu đề mang hơi hướng tài liệu nghiên cứu */
+h1, h2, h3, .academic-title {
+  font-family: 'Lora', serif;
+  color: #0F172A; /* Đậm hơn text thường để tạo cấu trúc phân tầng rõ rệt */
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+}
+
+/* 5. CÁC CLASS TIỆN ÍCH DÀNH RIÊNG CHO EDITOR */
+
+/* Khung trang giấy ghi chú chính */
+.note-page {
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-page);
+  box-shadow: var(--shadow-page);
+  padding: 40px;
+  max-width: 850px; /* Chiều rộng tối ưu cho việc đọc (khoảng 70-80 ký tự/dòng) */
+  margin: 20px auto;
+}
+
+/* Trích dẫn (Blockquote/Callout) - Cực kỳ cần thiết cho ghi chú học thuật */
+.academic-quote {
+  border-left: 4px solid var(--primary-focus);
+  background-color: #EFF6FF;
+  padding: 16px 20px;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: var(--primary-focus);
+  border-radius: 0 var(--radius-ui) var(--radius-ui) 0;
+  margin: 20px 0;
+}
+
+/* Block Code cho các ghi chú liên quan đến kiến trúc hệ thống, code snippets */
+pre, .technical-block {
+  background-color: var(--bg-code);
+  color: var(--text-code);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+  padding: 16px;
+  border-radius: var(--radius-ui);
+  overflow-x: auto;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+/* Inline text highlight */
+.mark-highlight {
+  background-color: var(--accent-highlight);
+  color: #111827;
+  padding: 2px 4px;
+  border-radius: 4px;
+}

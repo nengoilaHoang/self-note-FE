@@ -1,0 +1,111 @@
+/* =========================================================
+   Component: HomePage
+   Style: Modern Chinoiserie
+   ========================================================= */
+
+.HomePage-container {
+  /* Khung bao ngoài cùng, tận dụng tối đa khoảng trống được cấp bởi MainLayout */
+  width: 100%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Hiệu ứng mờ dần khi chuyển trang */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Phần Tiêu đề của trang */
+.HomePage-header {
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.HomePage-title {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Đường gạch đứt chân dưới tiêu đề (Tạo điểm nhấn) */
+.HomePage-title::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40%;
+  height: 2px;
+  background-color: var(--accent-gold);
+}
+
+.HomePage-subtitle {
+  font-size: 1rem;
+  color: var(--text-ink);
+  opacity: 0.7;
+}
+
+/* Bố cục dạng Lưới (Grid Layout) 
+  Giải thích: Tự động lấp đầy (auto-fill), mỗi cột tối thiểu 280px, tối đa 1 phần (1fr).
+*/
+.HomePage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px; /* Khoảng cách giữa các CourseCard */
+}
+
+/* ==========================================================================
+   CSS CHO PHẦN HEADER & NÚT TẠO NOTE
+   ========================================================================== */
+.header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.HomePage-title {
+  margin: 0;
+  font-family: 'Lora', serif;
+  color: #0F172A;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+/* Nút Tạo Note Mới */
+.btn-create-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--primary-focus);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-ui);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(30, 64, 175, 0.2);
+}
+
+.btn-create-note:hover {
+  background-color: #1e3a8a; /* Xanh đậm hơn khi di chuột */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(30, 64, 175, 0.3);
+}
+
+/* Responsive cho thiết bị di động */
+@media (max-width: 600px) {
+  .header-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .btn-create-note {
+    width: 100%;
+    justify-content: center;
+  }
+}

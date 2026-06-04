@@ -1,0 +1,97 @@
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--bg-canvas); 
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px; 
+}
+
+/* Mặc định ẩn các thành phần của Mobile trên màn hình Desktop */
+.sidebar-overlay {
+  display: none;
+}
+.mobile-toggle-bar {
+  display: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE CHO ĐIỆN THOẠI & TABLET NHỎ (Max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* 1. Biến Sidebar thành Menu trượt ngoài màn hình */
+  .sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    transform: translateX(-100%); /* Ẩn ra bên trái */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Trượt vào khi state isSidebarOpen = true */
+  .sidebar-container.open {
+    transform: translateX(0);
+  }
+
+  /* 2. Lớp phủ đen làm mờ nội dung phía sau khi mở Sidebar */
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.5); /* Màu đen trong suốt */
+    z-index: 999; /* Dưới Sidebar 1 bậc */
+    backdrop-filter: blur(2px);
+  }
+
+  /* 3. Thanh chứa nút Menu Hamburger */
+  .mobile-toggle-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-main);
+  }
+
+  .btn-hamburger {
+    background: none;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  /* Tinh chỉnh lại không gian đọc cho mobile */
+  .content-area {
+    padding: 16px 12px; 
+  }
+}

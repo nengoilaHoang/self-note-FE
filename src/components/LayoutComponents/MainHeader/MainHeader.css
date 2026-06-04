@@ -1,0 +1,46 @@
+.main-header {
+  background-color: var(--bg-surface);
+  border-bottom: var(--border-subtle);
+  padding: 24px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.main-header .academic-title {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: -0.5px;
+}
+
+.main-header .highlight {
+  color: var(--primary-focus);
+  font-style: italic;
+}
+
+.main-header .subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-left: var(--border-subtle);
+  padding-left: 16px;
+}
+
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .main-header .subtitle {
+    border-left: none;
+    padding-left: 0;
+  }
+}

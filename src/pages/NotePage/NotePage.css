@@ -1,0 +1,226 @@
+.html-page-container {
+  background-color: var(--bg-surface);
+  /* Chiếm trọn vẹn 100% chiều rộng và ít nhất 100% chiều cao của Outlet */
+  width: 100%;
+  min-height: 100%; 
+  padding: 32px 40px; 
+  
+  /* Vẫn giữ lại bo góc và bóng đổ nhẹ để tạo cảm giác trang giấy nổi lên 
+     (Nếu bạn muốn phẳng hoàn toàn, có thể xóa 2 dòng bên dưới) */
+  border-radius: var(--radius-page, 12px);
+  box-shadow: var(--shadow-page, 0 4px 20px rgba(0, 0, 0, 0.03));
+}
+
+/* Phần Header chứa Nút Back và Title */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.btn-back {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-ui);
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  background-color: var(--bg-canvas);
+  border-color: var(--text-muted);
+  transform: translateX(-2px);
+}
+
+.page-title {
+  font-family: 'Lora', serif;
+  color: #0F172A;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Style cho phần nội dung HTML được render */
+.page-content {
+  color: var(--text-main);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.page-content h2, 
+.page-content h3 {
+  font-family: 'Lora', serif;
+  color: #0F172A;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.page-content p {
+  margin-bottom: 1.2em;
+}
+
+.page-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.page-content a {
+  color: var(--primary-focus);
+  text-decoration: none;
+}
+
+.page-content a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive: Giảm padding trên màn hình điện thoại */
+@media (max-width: 768px) {
+  .html-page-container {
+    padding: 20px 16px;
+  }
+}
+
+/* ==========================================================================
+   HỆ THỐNG TAG CHO NOTE
+   ========================================================================== */
+.note-header-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.note-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.note-tag {
+  background-color: #EFF6FF;
+  color: var(--primary-focus);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-remove-note-tag {
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.btn-remove-note-tag:hover {
+  background-color: rgba(30, 64, 175, 0.1); /* Xanh đậm hơn một chút khi hover */
+}
+
+/* Nút thêm tag dạng dashed (nét đứt) */
+.btn-add-tag {
+  background: transparent;
+  border: 1px dashed var(--border-subtle);
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.btn-add-tag:hover {
+  border-color: var(--primary-focus);
+  color: var(--primary-focus);
+}
+
+/* Input khi đang gõ tag mới */
+.add-tag-input {
+  border: 1px solid var(--primary-focus);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  outline: none;
+  width: 120px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Wrapper chứa nút Thêm tag và Dropdown */
+.add-tag-wrapper {
+  position: relative;
+}
+
+/* Lớp phủ vô hình toàn màn hình để bắt sự kiện click ra ngoài thì đóng dropdown */
+.dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+}
+
+/* Menu Dropdown chứa các tag có sẵn */
+.tag-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-ui);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  min-width: 160px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.tag-dropdown-item {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  text-align: left;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.tag-dropdown-item:hover {
+  background-color: #EFF6FF;
+  color: var(--primary-focus);
+}
+
+.tag-dropdown-empty {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+}
