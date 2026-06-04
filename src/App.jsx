@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import HomePage from "./pages/HomePage/HomePage";
 import HtmlPage from "./pages/NotePage/NotePage";
+console.log(import.meta.env.DEV 
+  ? (import.meta.env.VITE_API_URL || 'http://localhost:8080') 
+  : '__VITE_API_URL_PLACEHOLDER__');
 function App() {
   return (
     <Router>
