@@ -20,7 +20,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: hoangle2004/my-frontend:latest # Đổi thành tên image
+          tags: nengoilahoang/self-note:latest # Đổi thành tên image
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-push # Phải build xong bước 1 thì bước 2 mới được chạy
