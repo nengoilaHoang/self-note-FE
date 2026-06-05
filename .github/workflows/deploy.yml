@@ -32,7 +32,7 @@ jobs:
         with:
           host: ${{ secrets.SERVER_HOST }}         # IP của Server
           username: root                           # User đăng nhập (root)
-          key: ${{ secrets.SERVER_SSH_KEY }}       # Khóa Private SSH Key của bạn
+          password: ${{ secrets.SERVER_SSH_KEY }}       # Khóa Private SSH Key của bạn
           source: "docker-compose.yml"
           target: "/home/ubuntu/self-note/"       # Đưa thẳng vào thư mục dự án trên server
       - name: SSH vào Server và gạt cần khởi chạy Docker Compose
@@ -40,7 +40,7 @@ jobs:
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: root
-          key: ${{ secrets.SERVER_SSH_KEY }}
+          password: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /home/ubuntu/self-note
             docker compose pull
