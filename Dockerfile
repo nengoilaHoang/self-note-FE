@@ -7,6 +7,7 @@ COPY . .
 RUN npm run build
 # --- Giai đoạn 2: Dùng Nginx để chạy web ---
 FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 # 1. Copy toàn bộ file tĩnh (HTML/JS) vào thư mục của Nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 # 2. Copy file script cấu hình từ máy của bạn vào trong Docker
