@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   frontend:
-    image: hoangle2004/my-frontend:latest # Image FE bạn vừa viết Dockerfile ở câu trước
+    image: nengoilahoang/self-note:latest
     container_name: seft_note_frontend
     restart: always
     ports:
